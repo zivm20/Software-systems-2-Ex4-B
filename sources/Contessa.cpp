@@ -14,7 +14,7 @@ Contessa::Contessa(Game& game, const string& name):Player(game,name){
 void Contessa::block(Player& player){
     if(player.role() == "Assassin"){
         if(player.lastMove() == "coup"){
-            _game.setAlive(player.target(),true);
+            _game->setAlive(player.target(),true);
             player.setLastMove("");
             player.setTarget("");
         }

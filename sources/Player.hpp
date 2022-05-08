@@ -16,7 +16,7 @@ namespace coup{
             std::string _lastMove;
             std::string _target;
             int coup_price;
-            Game _game;
+            Game* _game;
 
         public:
             Player(Game& game, const std::string& name);
@@ -45,7 +45,7 @@ namespace coup{
                 _lastMove = s;
             }
             inline Game game() const{
-                return _game;
+                return (*_game);
             }
             inline std::string target() const{
                 return _target;
@@ -54,13 +54,13 @@ namespace coup{
                 _target = s;
             }
             inline bool isAlive() const{
-                return _game.isAlive(_name);
+                return _game->isAlive(_name);
             }
             inline void setAlive(const bool& flag){
-                _game.setAlive(_name,flag);
+                _game->setAlive(_name,flag);
             }
             inline int coins() const{
-                return _game.coins(_name);
+                return _game->coins(_name);
             }
             void addCoins(const int& n);
     };

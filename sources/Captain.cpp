@@ -14,7 +14,7 @@ Captain::Captain(Game& game, const string& name):Player(game,name){
 void Captain::block(Player& player){
     if(player.role() == "Captain"){
         if(player.lastMove() == "steal"){
-            _game.addCoins(player.target(),2);
+            _game->addCoins(player.target(),2);
             player.addCoins(-2);
             player.setTarget("");
             player.setLastMove("");

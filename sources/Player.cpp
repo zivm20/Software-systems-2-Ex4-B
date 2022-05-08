@@ -7,8 +7,8 @@
 using namespace coup;
 using namespace std;
 
-Player::Player(Game& game, const string& name): _game(game), _name(name),coup_price(DEFAULT_COUP_PRICE),_role(""),_lastMove(""),_target(""){
-    _game.addPlayer(_name);
+Player::Player(Game& game, const string& name): _game(&game), _name(name),coup_price(DEFAULT_COUP_PRICE),_role(""),_lastMove(""),_target(""){
+    _game->addPlayer(_name);
 }
 void Player::valid_move(const string& move, const int& price){
     if(coins() >= MAX_COINS_ALLOWED && move != "coup"){
@@ -17,7 +17,7 @@ void Player::valid_move(const string& move, const int& price){
     if(coins() < price){
         throw runtime_error("Not enough coins to preform "+move);
     }
-    if(_game.turn() != name()){
+    if(_game->turn() != name()){
         throw runtime_error("It's not "+name()+"'s turn");
     }
     if(!isAlive()){
@@ -49,8 +49,8 @@ void Player::block(Player& player){
 void Player::end_turn(const string& move, const string& target){
     _target = target;
     _lastMove = move;
-    _game.nextTurn();
+    _game->nextTurn();
 }
 void Player::addCoins(const int& n){
-    _game.addCoins(name(),n);
+    _game->addCoins(name(),n);
 }
