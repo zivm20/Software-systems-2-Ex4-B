@@ -7,7 +7,7 @@
 using namespace coup;
 using namespace std;
 
-Player::Player(Game& game, const string& name): _game(&game), _name(name),coup_price(DEFAULT_COUP_PRICE),_role(""),_lastMove(""),_target(""){
+Player::Player(Game& game, const string& name): _game(&game), _name(name),_role(""),_lastMove(""),_target(""){
     _game->addPlayer(_name);
 }
 void Player::valid_move(const string& move, const int& price){
@@ -35,12 +35,12 @@ void Player::foreign_aid(){
     end_turn("foreign_aid","");
 }
 void Player::coup(Player& player){
-    valid_move("coup",coup_price);
+    valid_move("coup",DEFAULT_COUP_PRICE);
     if(!player.isAlive()){
         throw runtime_error("Player "+player.name()+" is already dead");
     }
     player.setAlive(false);
-    addCoins(-coup_price);
+    addCoins(-DEFAULT_COUP_PRICE);
     end_turn("coup",player.name());
 }
 void Player::block(Player& player){

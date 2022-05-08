@@ -13,10 +13,12 @@ Contessa::Contessa(Game& game, const string& name):Player(game,name){
 
 void Contessa::block(Player& player){
     if(player.role() == "Assassin"){
-        if(player.lastMove() == "coup"){
+        if(player.lastMove() == "coup3"){
             _game->setAlive(player.target(),true);
             player.setLastMove("");
             player.setTarget("");
+            return;
         }
     }
+    throw runtime_error("Invalid Block!");
 }

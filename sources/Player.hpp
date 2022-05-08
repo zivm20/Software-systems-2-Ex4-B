@@ -15,7 +15,6 @@ namespace coup{
             std::string _name;
             std::string _lastMove;
             std::string _target;
-            int coup_price;
             Game* _game;
 
         public:
@@ -24,7 +23,7 @@ namespace coup{
             //playable moves
             void income();
             void foreign_aid();
-            void coup(Player& player);
+            virtual void coup(Player& player);
             virtual void block(Player& player);
 
             //helpers

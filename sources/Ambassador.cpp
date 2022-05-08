@@ -30,12 +30,13 @@ void Ambassador::transfer(Player& player1, Player& player2){
     if(!player1.isAlive() || !player2.isAlive()){
         throw runtime_error("Cannot transfer to or from a dead player");
     }
-    if(player1.coins()>0){
-        player1.addCoins(-1);
-        player2.addCoins(1);
+    if(player1.coins()<1){
+        throw runtime_error(player1.name() + " doesn't have enough coins to transfer!");
     }
-    end_turn("transfer","");  
     
+    player1.addCoins(-1);
+    player2.addCoins(1);
+    end_turn("transfer","");
 }
 
 
