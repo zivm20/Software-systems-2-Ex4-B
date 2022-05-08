@@ -11,6 +11,9 @@ Player::Player(Game& game, const string& name): _game(&game), _name(name),_role(
     _game->addPlayer(_name);
 }
 void Player::valid_move(const string& move, const int& price){
+    if(_game->getPlayerCount() < 2){
+        throw runtime_error("Not enough players");
+    }
     if(coins() >= MAX_COINS_ALLOWED && move != "coup"){
         throw runtime_error("Must use coup with 10 or more coins");
     }
@@ -23,6 +26,7 @@ void Player::valid_move(const string& move, const int& price){
     if(!isAlive()){
         throw runtime_error("Player "+name()+" is dead");
     }
+    _game->startGame();
 }
 void Player::income(){
     valid_move("income",0);

@@ -246,6 +246,7 @@ TEST_CASE("Block") {
 	}
 	// each one has 6 coins
 	assassin.coup(ambassador); // assassin 3
+	
 	contessa.block(assassin);
 	duke.tax(); //duke 9
 	assassin2.foreign_aid(); // assassin2 8
@@ -254,6 +255,7 @@ TEST_CASE("Block") {
 	captain.steal(contessa); // contessa 5, captain 8
 	ambassador.block(captain); // contessa 7, captain 6
 	contessa.coup(duke); // contessa 0
+	
 
 	CHECK_EQ(assassin.coins(),2);
 	CHECK_EQ(ambassador.coins(),6);

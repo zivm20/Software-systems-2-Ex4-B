@@ -16,7 +16,7 @@ void Captain::block(Player& player){
         if(player.lastMove() == "steal"){
             string target = player.target().substr(1,player.target().size()-1);
             int amount = min(stoi(player.target().substr(0,1)),player.coins());
-            _game->addCoins(player.target(),amount);
+            _game->addCoins(target,amount);
             player.addCoins(-amount);
             player.setTarget("");
             player.setLastMove("");
