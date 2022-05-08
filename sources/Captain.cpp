@@ -14,8 +14,10 @@ Captain::Captain(Game& game, const string& name):Player(game,name){
 void Captain::block(Player& player){
     if(player.role() == "Captain"){
         if(player.lastMove() == "steal"){
-            _game->addCoins(player.target(),2);
-            player.addCoins(-2);
+            string target = player.target().substr(1,player.target().size()-1);
+            int amount = min(stoi(player.target().substr(0,1)),player.coins());
+            _game->addCoins(player.target(),amount);
+            player.addCoins(-amount);
             player.setTarget("");
             player.setLastMove("");
             return;
@@ -28,12 +30,10 @@ void Captain::steal(Player& player){
     if(!player.isAlive()){
         throw runtime_error("Cannot steal from a dead player");
     }
-    if(player.coins()<2){
-        throw runtime_error(player.name() + " doesn't have enough coins to steal!");
-    }
-    player.addCoins(-2);
-    addCoins(2);
-    end_turn("steal",player.name());
+    int _amount = min(2,player.coins());
+    player.addCoins(-_amount);
+    addCoins(_amount);
+    end_turn("steal",to_string(_amount)+player.name());
 }
 
 

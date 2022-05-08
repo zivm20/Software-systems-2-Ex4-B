@@ -13,8 +13,10 @@ Ambassador::Ambassador(Game& game, const string& name):Player(game,name){
 void Ambassador::block(Player& player){
     if(player.role() == "Captain"){
         if(player.lastMove() == "steal"){
-            _game->addCoins(player.target(),2);
-            player.addCoins(-2);
+            string target = player.target().substr(1,player.target().size()-1);
+            int amount = min(stoi(player.target().substr(0,1)),player.coins());
+            _game->addCoins(player.target(),amount);
+            player.addCoins(-amount);
             player.setTarget("");
             player.setLastMove("");
             return;
@@ -28,12 +30,12 @@ void Ambassador::transfer(Player& player1, Player& player2){
     if(!player1.isAlive() || !player2.isAlive()){
         throw runtime_error("Cannot transfer to or from a dead player");
     }
-    if(player1.coins()<1){
-        throw runtime_error(player1.name() + " doesn't have enough coins to transfer!");
+    if(player1.coins()>0){
+        player1.addCoins(-1);
+        player2.addCoins(1);
     }
-    player1.addCoins(-1);
-    player2.addCoins(1);
-    end_turn("transfer","");
+    end_turn("transfer","");  
+    
 }
 
 

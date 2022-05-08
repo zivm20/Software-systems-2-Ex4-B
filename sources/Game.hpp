@@ -42,6 +42,7 @@ namespace coup{
 
             void addCoins(const std::string& name,const int& amount);
             
+            
     };
 }
 

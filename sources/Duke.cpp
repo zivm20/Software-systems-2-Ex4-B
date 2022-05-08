@@ -14,7 +14,7 @@ Duke::Duke(Game& game, const string& name):Player(game,name){
 void Duke::block(Player& player){
     
     if(player.lastMove() == "foreign_aid"){
-        player.addCoins(-2);
+        player.addCoins(-min(2,player.coins()));
         player.setTarget("");
         return;
     }
