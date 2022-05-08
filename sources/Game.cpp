@@ -23,10 +23,8 @@ void Game::addPlayer(const string& name){
     _isAlive.insert(pair<string,bool>(name,true));
     _coins.insert(pair<string,int>(name,0));
 }
-string Game::turn() const{
-    return _players[curr_turn];
-}
-string Game::Winner(){
+
+string Game::winner(){
     vector<string> active_players = players();
     if(active_players.size() != 1){
         throw runtime_error("Game hasn't ended yet!");

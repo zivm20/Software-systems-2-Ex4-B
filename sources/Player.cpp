@@ -51,4 +51,6 @@ void Player::end_turn(const string& move, const string& target){
     _lastMove = move;
     _game.nextTurn();
 }
-
+void Player::addCoins(const int& n){
+    _game.addCoins(name(),n);
+}
