@@ -7,7 +7,7 @@
 using namespace coup;
 using namespace std;
 
-Captain::Captain(Game& game, string name):Player(game,name){
+Captain::Captain(Game& game, const string& name):Player(game,name){
     _role = "Captain";
 }
 

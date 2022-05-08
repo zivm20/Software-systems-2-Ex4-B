@@ -5,6 +5,9 @@
 #include "Game.hpp"
 #pragma once
 namespace coup{
+    const int DEFAULT_COUP_PRICE = 7;
+    const int ASSASSIN_COUP_PRICE = 3;
+    const int MAX_COINS_ALLOWED = 10;
     class Player{
         
         protected:
@@ -12,6 +15,7 @@ namespace coup{
             std::string _name;
             std::string _lastMove;
             std::string _target;
+            int coup_price;
             Game _game;
 
         public:
@@ -20,7 +24,7 @@ namespace coup{
             //playable moves
             void income();
             void foreign_aid();
-            virtual void coup(Player& player);
+            void coup(Player& player);
             virtual void block(Player& player);
 
             //helpers

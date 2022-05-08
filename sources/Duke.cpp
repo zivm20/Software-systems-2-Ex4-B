@@ -7,7 +7,7 @@
 using namespace coup;
 using namespace std;
 
-Duke::Duke(Game& game, string name):Player(game,name){
+Duke::Duke(Game& game, const string& name):Player(game,name){
     _role = "Duke";
 }
 

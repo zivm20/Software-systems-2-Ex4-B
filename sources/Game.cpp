@@ -7,7 +7,7 @@
 using namespace coup;
 using namespace std;
 
-Game::Game():_players(),_coins(),_isAlive(), curr_turn(0),coin_buffer(0){
+Game::Game(): curr_turn(0),coin_buffer(0){
 }
 vector<string> Game::players(){
     vector<string> names;

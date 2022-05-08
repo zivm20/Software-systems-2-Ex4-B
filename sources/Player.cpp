@@ -7,20 +7,20 @@
 using namespace coup;
 using namespace std;
 
-Player::Player(Game& game, const string& name): _game(game), _name(name),_role(""),_lastMove(""),_target(""){
+Player::Player(Game& game, const string& name): _game(game), _name(name),coup_price(DEFAULT_COUP_PRICE),_role(""),_lastMove(""),_target(""){
     _game.addPlayer(_name);
 }
 void Player::valid_move(const string& move, const int& price){
-    if(coins() >= 10 && move != "coup"){
+    if(coins() >= MAX_COINS_ALLOWED && move != "coup"){
         throw runtime_error("Must use coup with 10 or more coins");
     }
-    else if(coins() < price){
+    if(coins() < price){
         throw runtime_error("Not enough coins to preform "+move);
     }
-    else if(_game.turn() != name()){
+    if(_game.turn() != name()){
         throw runtime_error("It's not "+name()+"'s turn");
     }
-    else if(!isAlive()){
+    if(!isAlive()){
         throw runtime_error("Player "+name()+" is dead");
     }
 }
@@ -35,12 +35,12 @@ void Player::foreign_aid(){
     end_turn("foreign_aid","");
 }
 void Player::coup(Player& player){
-    valid_move("coup",7);
+    valid_move("coup",coup_price);
     if(!player.isAlive()){
         throw runtime_error("Player "+player.name()+" is already dead");
     }
     player.setAlive(false);
-    addCoins(-7);
+    addCoins(-coup_price);
     end_turn("coup",player.name());
 }
 void Player::block(Player& player){
