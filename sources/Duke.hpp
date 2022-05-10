@@ -8,7 +8,7 @@ namespace coup{
     class Duke:public Player{
         public:
             Duke(Game& game, const std::string& name);
-            void block(Player& player);
-            void tax();
+            void block(Player& player) override;
+            void tax() override;
     };
 }

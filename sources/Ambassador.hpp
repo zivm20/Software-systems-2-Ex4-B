@@ -8,7 +8,7 @@ namespace coup{
     class Ambassador:public Player{
         public:
             Ambassador(Game& game, const std::string& name);
-            void block(Player& player);
-            void transfer(Player& player1, Player& player2);
+            void block(Player& player) override;
+            void transfer(Player& player1, Player& player2) override;
     };
 }

@@ -24,7 +24,12 @@ namespace coup{
             void income();
             void foreign_aid();
             virtual void coup(Player& player);
+            
+            //playable moves for certain roles
             virtual void block(Player& player);
+            virtual void steal(Player& player);
+            virtual void tax();
+            virtual void transfer(Player& player1, Player& player2); 
 
             //helpers
             void valid_move(const std::string& move, const int& price);

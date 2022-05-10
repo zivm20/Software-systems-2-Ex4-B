@@ -52,6 +52,8 @@ void Game::nextTurn(){
     while(!isAlive(_players[curr_turn]));
     
 }
+//we need to track the amount of coins we had at the start of the turn and correctly add
+//it at the end of the turn
 int Game::coins(const std::string& name) const{
     if(name == turn()){
         return coin_buffer+_coins.at(name);
