@@ -67,7 +67,9 @@ void Player::valid_move(const string& move, const int& price){
     }
     _game->startGame();
 }
-
+int Player::coins() const{
+    return _game->coins(_name);
+}
 void Player::addCoins(const int& n){
     _game->addCoins(name(),n);
 }

@@ -63,9 +63,7 @@ namespace coup{
             inline void setAlive(const bool& flag){
                 _game->setAlive(_name,flag);
             }
-            inline int coins() const{
-                return _game->coins(_name);
-            }
+            int coins() const;
             void addCoins(const int& n);
     };
 }
