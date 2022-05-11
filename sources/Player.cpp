@@ -67,6 +67,14 @@ void Player::valid_move(const string& move, const int& price){
     }
     _game->startGame();
 }
+
+bool Player::isAlive() const{
+    return _game->isAlive(_name);
+}
+void Player::setAlive(const bool& flag){
+    _game->setAlive(_name,flag);
+}
+
 int Player::coins() const{
     return _game->coins(_name);
 }

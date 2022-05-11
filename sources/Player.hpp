@@ -57,12 +57,8 @@ namespace coup{
             inline void setTarget(const std::string& s){
                 _target = s;
             }
-            inline bool isAlive() const{
-                return _game->isAlive(_name);
-            }
-            inline void setAlive(const bool& flag){
-                _game->setAlive(_name,flag);
-            }
+            bool isAlive() const;
+            void setAlive(const bool& flag);
             int coins() const;
             void addCoins(const int& n);
     };
