@@ -37,7 +37,7 @@ void Ambassador::transfer(Player& player1, Player& player2){
     
     player1.addCoins(-1);
     player2.addCoins(1);
-    end_turn("transfer","");
+    end_turn("transfer",player1.name() + " " + player2.name());
 }
 
 
